@@ -15,11 +15,6 @@ def prepare_prices(df, unit_choice):
     url = "https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json"
     response = requests.get(url).json()
 
-    # for r in response["ForeignExchangeRates"]:
-    #     if r["FromCurrency"]["Value"] == "USD" and r["ToCurrency"]["Value"] == "CAD":
-    #         usd_to_cad = float(r["Rate"])
-    #         cad_to_usd = 1 / float(r["Rate"])
-
     latest = response["observations"][-1]
     usd_to_cad = float(latest["FXUSDCAD"]["v"])
     cad_to_usd = 1 / usd_to_cad
